@@ -16,7 +16,6 @@ This module exists is source code form just for documentation purposes, as it
 is be replaced in runtime by `c:bondy_net_gen:do/0`.
 """).
 
--export([broadcast/1]).
 -export([broadcast/2]).
 -export([is_alive/0]).
 -export([is_connected/1]).
@@ -40,9 +39,6 @@ is be replaced in runtime by `c:bondy_net_gen:do/0`.
 %% CALLBACKS FOR CUSTOM BACKEND.
 %% =============================================================================
 
-
--callback broadcast(Msg :: any()) -> ok.
--optional_callbacks([broadcast/1]).
 
 -callback broadcast(Msg :: any(), Handler :: module()) -> ok.
 -optional_callbacks([broadcast/2]).
@@ -90,14 +86,7 @@ is be replaced in runtime by `c:bondy_net_gen:do/0`.
 %% =============================================================================
 
 
-
-broadcast(_) -> error(not_implemented).
-
 broadcast(_, _) -> error(not_implemented).
-
-connect_node(_) -> error(not_implemented).
-
-disconnect_node(_) -> error(not_implemented).
 
 is_alive() -> error(not_implemented).
 
